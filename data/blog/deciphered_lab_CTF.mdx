@@ -30,6 +30,57 @@ That too with a decent lead of 5 points, which is significant considering the nu
 - PRESENT : I am officially *Doronophobic* now.
 - Time Schedule : All teammates had prior commitments so were not able to devote a lot of time, even if wanting too.
 
+### PRESENT
+The hardest question by far in the whole contest was PRESENT, which made me Doronophobic.
+
+Here's the problem statement for anyone wanting to try it out.
+```
+Present
+100
+Problem Statement
+You are given a ciphertext that has been encrypted with 31 rounds of PRESENT
+Can you find the flag hiding inside the present :gift:
+
+HINT 1
+Use the oracle to get potential values of the masterkey
+```
+[Get the docker image here](https://hub.docker.com/r/velvetrashy/present)
+
+##### About the PS
+In the given environment all these were present:
+- ciphertext.txt (Most prob the encoded flag)
+- an executable oracle file which took an integer input and gave a master key accordingly.
+- AmIaHint Folder which consisted of:
+  - a riddle
+  - 64 folders of this-that with a number inside eveyone.
+
+Here's the riddle text
+```
+In the realm of bytes, I'm a bit askew
+Different in number, maybe its true
+
+I dance with fewer, just seven in line
+Give me more space, for a total of nine
+
+If a byte of mine, is not eight bits wide
+Where in this world, would I be able to hide
+
+Somewhere in the middle, me you would discover
+But alas, I need to leave behind a brother
+```
+##### Our approach
+
+- We figured out that in those `this-that` folders, 7, 9, 63 were marked as executable. So these numbers are important.
+- From the riddle it was observable that the 7-bit thingey must be ASCII.
+- So 63 must be the number to input to the oracle for masterkey.
+- From the title of the problem, we got to know that PRESENT encoder has been used. 
+- We wrote down the code for PRESENT decoder [by referring to this research paper](https://www.iacr.org/archive/ches2007/47270450/47270450.pdf)
+- The code was working fine for the test cases.
+- We took the masterkey and the ciphertext and decoded it with rounds set as 31.
+
+Now after this is where we went wrong.
+- We interpreted that the `somewhere in the middle` line of the riddle symbolizes that we gotta filter some bits out of the binary that we generated, we tried out removing bits, adding paddings, using caeser ciphers (flipping bits in parts), etc.
+- Apparently, the riddle symbolized that we need to stop somewhere in the middle of the PRESENT cipher and try and test our way out. 
 
 
 ### Tips and Tricks
