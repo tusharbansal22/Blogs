@@ -26,6 +26,29 @@ We ended up winning!
 
 That too with a decent lead of 5 points, which is significant considering the number of questions were relatively low. Shout out to RTFM (Readers of the friendly manual) and Team !Flag for the tight contest though, and congrats for finishing on the top, just behind us though :)
 
+### Anecdote Time!
+
+We were so much caught by the spirit of doubting and over analysing everything present, that when the organising team circulated a doubt form in which we had to submit if we had any issues regarding the problem statements.
+
+We were dead sure that a hint would be present somewhere or the other.
+
+In the form an image was present randomly outta nowhere and we smirked collectively as all of us synchonously thought that a hint or a secret flag must be present inside.
+
+We `binwalk`-ed the image and a zlib folder was present but the special part about this was that the folder name was 29. (Spoiler alert) 29 was something closely related to the PRESENT problem statement. 
+
+So we thought something must be present inside. We unzipped the zlib using the command `zlib-flate -uncompress < your_file.zlib > output_file` but the file was matching no format.
+
+We opened the file in hexedit and found the format to be `.Apw` an extension used in Windows for a password manager!
+
+One of my teammate quickly switched from Ubuntu to Windows and bought a paid password manager decryptor tool for free using fake credit card bins. 
+
+When he opened the tool said that the file requires a password to open. Then in the form for doubts, we confidently asked the question `What is the password to the .Apw file` and felt like Sherlock :)
+
+But when I called the organising team and told them about the whole anecdote, they started laughing nomadically and told us that it was a RANDOM SCREENSHOT from internet and we should calm down a bit with these conspiracy theories and and called it a day :( 
+
+Though it was very fun for sure, lol.
+)
+
 ### Challenges 
 - PRESENT : I am officially *Doronophobic* now.
 - Time Schedule : All teammates had prior commitments so were not able to devote a lot of time, even if wanting too.
